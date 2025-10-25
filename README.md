@@ -23,11 +23,16 @@ Ubuntu Server 24.04 LTS setup scripts and guides optimized for HP Laptop 14s-dq2
 
 ## Files
 
+### System Setup
 - `setup-hp14s-ubuntu-hyprland-btrfs.sh` - Main automated setup script
 - `setup-hp14s-ubuntu-hyprland-btrfs-LEGACY.sh` - Legacy version with automatic Hyprland install
 - `HP-14s-Ubuntu-Hyprland-Guide.md` - Comprehensive installation guide
 - `download-networkmanager.txt` - Offline NetworkManager installation guide
 - `00-installer-config.yaml` - Netplan WiFi configuration
+
+### MATLAB Installation
+- `install-matlab.sh` - Automated MATLAB installation script
+- `MATLAB-Installation-Guide.md` - Complete MATLAB setup and usage guide
 
 ## Quick Start
 
@@ -48,6 +53,18 @@ Ubuntu Server 24.04 LTS setup scripts and guides optimized for HP Laptop 14s-dq2
    ./install.sh
    ```
 6. Reboot and select Hyprland at login
+
+## MATLAB Installation
+
+After system setup is complete:
+
+```bash
+cd ~/nijo-hp-lap
+chmod +x install-matlab.sh
+./install-matlab.sh
+```
+
+See `MATLAB-Installation-Guide.md` for detailed instructions and usage tips.
 
 ## Memory Optimization
 
