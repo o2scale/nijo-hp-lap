@@ -1,0 +1,90 @@
+NetworkManager Offline Installation for Ubuntu 24.04
+====================================================
+
+STEP 1: Download these files on Windows PC
+-------------------------------------------
+
+Download these 7 files (copy URLs to browser):
+
+1. network-manager (2.3 MB):
+http://archive.ubuntu.com/ubuntu/pool/main/n/network-manager/network-manager_1.46.0-1ubuntu2_amd64.deb
+
+2. libnm0 (468 KB):
+http://archive.ubuntu.com/ubuntu/pool/main/n/network-manager/libnm0_1.46.0-1ubuntu2_amd64.deb
+
+3. libndp0 (12 KB):
+http://security.ubuntu.com/ubuntu/pool/main/libn/libndp/libndp0_1.8-1fakesync1ubuntu0.24.04.1_amd64.deb
+
+4. wpasupplicant (1.4 MB):
+http://security.ubuntu.com/ubuntu/pool/main/w/wpa/wpasupplicant_2.10-21ubuntu0.2_amd64.deb
+
+5. libpcsclite1 (21 KB):
+http://archive.ubuntu.com/ubuntu/pool/main/p/pcsc-lite/libpcsclite1_2.0.3-1build1_amd64.deb
+
+6. libbluetooth3 (83 KB) - version 5.72 (>= 4.91 required):
+http://archive.ubuntu.com/ubuntu/pool/main/b/bluez/libbluetooth3_5.72-0ubuntu5_amd64.deb
+
+7. libteamdctl0 (12 KB) - version 1.31 (>= 1.9 required):
+http://mirrors.kernel.org/ubuntu/pool/main/libt/libteam/libteamdctl0_1.31-1build3_amd64.deb
+
+Total size: ~4.3 MB
+
+
+STEP 2: Transfer to Ubuntu via USB
+-----------------------------------
+
+1. Copy all 7 .deb files to a USB drive
+2. Insert USB into HP laptop
+3. Mount USB (if not auto-mounted):
+   sudo mkdir -p /mnt/usb
+   sudo mount /dev/sdb1 /mnt/usb
+
+4. Copy files to home directory:
+   cp /mnt/usb/*.deb ~/
+
+
+STEP 3: Install on Ubuntu (in this order)
+------------------------------------------
+
+cd ~
+
+sudo dpkg -i libpcsclite1_2.0.3-1build1_amd64.deb
+sudo dpkg -i libbluetooth3_5.72-0ubuntu5_amd64.deb
+sudo dpkg -i libteamdctl0_1.31-1build3_amd64.deb
+sudo dpkg -i libndp0_1.8-1fakesync1ubuntu0.24.04.1_amd64.deb
+sudo dpkg -i wpasupplicant_2.10-21ubuntu0.2_amd64.deb
+sudo dpkg -i libnm0_1.46.0-1ubuntu2_amd64.deb
+sudo dpkg -i network-manager_1.46.0-1ubuntu2_amd64.deb
+
+
+STEP 4: Start NetworkManager
+-----------------------------
+
+sudo systemctl start NetworkManager
+sudo systemctl enable NetworkManager
+
+
+STEP 5: Connect to WiFi (EASY!)
+--------------------------------
+
+List available WiFi networks:
+nmcli device wifi list
+
+Connect to your network:
+nmcli device wifi connect "Thayyil House" password "Thayyil2"
+
+Check connection:
+nmcli connection show
+
+Test internet:
+ping -c 4 8.8.8.8
+
+
+STEP 6: Run the setup script
+-----------------------------
+
+cd ~/
+bash setup-hp14s-ubuntu-hyprland-btrfs.sh
+
+
+Done! NetworkManager will handle all WiFi/network issues from now on.

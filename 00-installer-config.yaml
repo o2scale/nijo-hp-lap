@@ -1,0 +1,11 @@
+network:
+  version: 2
+  ethernets:
+    enx7e9bbb134b1e:
+      dhcp4: true
+  wifis:
+    wlo1:
+      dhcp4: true
+      access-points:
+        "Thayyil House":
+          password: "Thayyil2"
